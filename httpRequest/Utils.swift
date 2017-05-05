@@ -16,7 +16,7 @@ class Utils: NSObject {
             if let infoCheck = convertedJsonIntoDict?.value(forKey: info){
                 result = (infoCheck as AnyObject).description
             } else {
-                for (key,value) in convertedJsonIntoDict! {
+                for (key,_) in convertedJsonIntoDict! {
                     
                     if let parseJsonNom : [String: AnyObject] = (convertedJsonIntoDict?[key] as? [String: AnyObject]){
                         let dataSend = try JSONSerialization.data(withJSONObject: parseJsonNom, options: JSONSerialization.WritingOptions.prettyPrinted)

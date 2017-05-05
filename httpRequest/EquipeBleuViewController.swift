@@ -23,7 +23,7 @@ class EquipeBleuViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (infoGame.first?.summoners.count)! / 2
+        return infoGame.count > 0 ? (infoGame.first?.summoners.count)! / 2 : 0
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

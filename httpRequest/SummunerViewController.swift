@@ -20,7 +20,7 @@ class SummunerViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var tourelleDetruiteLabel: UILabel!
     @IBOutlet weak var totalMinionKillLabel: UILabel!
     
-    var typePartieDataSource = ["Unranked", "Unranked3x3", "AramUnranked5x5", "RankedTeam5x5", "RankedSolo5x5", "RankedFlexSR", "CAP5x5", "Hexakill", "NightmareBot", "OdinUnranked"]
+    var typePartieDataSource = [String]()
     
     var data: Data = Data()
     var summuner: Summuner?

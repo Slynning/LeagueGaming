@@ -31,13 +31,14 @@ class HttpRequestLeague: NSObject {
             // Check for error
             if error != nil
             {
-                print("error=\(error)")
+                print("error=\(String(describing: error))")
                 return
             }
             // Print out response string
             let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
             if(responseString != nil) {
-                print("responseString = \(responseString)")
+                print("Query = \(urlRequest)")
+                print("responseString = \(String(describing: responseString))")
             }
             dataInvocateur = data!
             semaphore.signal()

@@ -40,6 +40,7 @@ class Summuner: NSObject {
         let minionsKilled: Int
         let totalDamage: Int
         let win: Bool
+        
         init(subType: String, ipEarned: Int, championImage: UIImage, spell1: Int, spell2: Int, date: Int, level: Int, goldEarned: Int, numKill: Int, numDead: Int, numAssist: Int, minionsKilled: Int, totalDamage: Int, win: Bool) {
             self.subType = subType
             self.ipEarned = ipEarned
@@ -163,13 +164,17 @@ class Summuner: NSObject {
     }
     
     func getChampionImageWith (idChampion: Int) -> UIImage {
-        return UIImage(data: HttpRequestLeague().getDataFromServeur(url: "http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/\(getChampionName(idChampion: idChampion)).png"))!
+        return UIImage(data: HttpRequestLeague().getDataFromServeur(url: "http://ddragon.leagueoflegends.com/cdn/7.8.1/img/champion/\(getChampionName(idChampion: idChampion)).png"))!
     }
     
     func getInGameInfo (idSummoner: Int) -> [inGameInfo] {
         let data = HttpRequestLeague().getDataFromServeur(url: ApiLeague(region: "euw").getInGameInfo(summonerId: idSummoner))
         let dictionaryData = Utils().deserealization(data: data)
         if let gameInfo: [String: AnyObject] = dictionaryData as? [String: AnyObject]{
+            if (gameInfo.first?.key == "status")
+            {
+                return []
+            }
             let bannedChampion = gameInfo["bannedChampions"] as! [AnyObject]
             let participant = gameInfo["participants"] as! [AnyObject]
             return [inGameInfo(gameMode: gameInfo["gameMode"] as! String,
